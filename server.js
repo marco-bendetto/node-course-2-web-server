@@ -77,6 +77,14 @@ app.get('/bad', (req,res) => {
 });
 
 //now we have to bind a port on the maching and make it listen
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+//app.listen(3000, () => {
+//   console.log('Server is up on port 3000');
+//});
+
+//Last time we set a static port, but it could be dinamic and depends on where we deploy our app
+//we set port to a PORT value saved in a object process.env which contains all environment varibles. If it can't find the value, it sets to 3000 so the app can work locally
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
+
